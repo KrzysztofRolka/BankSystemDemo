@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.krolka.banksystem.service.BankingServiceTest" time="0.121" tests="7" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1250"/>
+    <property name="java.class.path" value="C:\Users\K_Rol\IdeaProjects\BankSystem\target\test-classes;C:\Users\K_Rol\IdeaProjects\BankSystem\target\classes;C:\Users\K_Rol\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.2\junit-jupiter-api-5.8.2.jar;C:\Users\K_Rol\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\K_Rol\.m2\repository\org\junit\platform\junit-platform-commons\1.8.2\junit-platform-commons-1.8.2.jar;C:\Users\K_Rol\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\K_Rol\.m2\repository\log4j\log4j\1.2.17\log4j-1.2.17.jar;C:\Users\K_Rol\.m2\repository\org\assertj\assertj-core\3.23.1\assertj-core-3.23.1.jar;C:\Users\K_Rol\.m2\repository\net\bytebuddy\byte-buddy\1.12.10\byte-buddy-1.12.10.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Europe/Warsaw"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="PL"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17.0.3.1\bin"/>
+    <property name="sun.java.command" value="C:\Users\K_Rol\AppData\Local\Temp\surefire18404277965492024094\surefirebooter-20220616172523555_3.jar C:\Users\K_Rol\AppData\Local\Temp\surefire18404277965492024094 2022-06-16T17-25-23_216-jvmRun1 surefire-20220616172523555_1tmp surefire_0-20220616172523555_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\K_Rol\IdeaProjects\BankSystem\target\test-classes;C:\Users\K_Rol\IdeaProjects\BankSystem\target\classes;C:\Users\K_Rol\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.2\junit-jupiter-api-5.8.2.jar;C:\Users\K_Rol\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\K_Rol\.m2\repository\org\junit\platform\junit-platform-commons\1.8.2\junit-platform-commons-1.8.2.jar;C:\Users\K_Rol\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\K_Rol\.m2\repository\log4j\log4j\1.2.17\log4j-1.2.17.jar;C:\Users\K_Rol\.m2\repository\org\assertj\assertj-core\3.23.1\assertj-core-3.23.1.jar;C:\Users\K_Rol\.m2\repository\net\bytebuddy\byte-buddy\1.12.10\byte-buddy-1.12.10.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\K_Rol"/>
+    <property name="user.language" value="pl"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2022-04-22"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-17.0.3.1"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\K_Rol\IdeaProjects\BankSystem"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\K_Rol\AppData\Local\Temp\surefire18404277965492024094\surefirebooter-20220616172523555_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.3.1+2-LTS-6"/>
+    <property name="user.name" value="K_Rol"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="Cp1250"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\K_Rol\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\K_Rol\AppData\Local\Temp\"/>
+    <property name="java.version" value="17.0.3.1"/>
+    <property name="user.dir" value="C:\Users\K_Rol\IdeaProjects\BankSystem"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1250"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-17.0.3.1\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Users\K_Rol\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\K_Rol\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\Git\cmd;C:\Program Files\dotnet;C:\Program Files\Java\jdk-17.0.3.1\bin;C:\Program Files\apache-maven-3.8.5-bin\bin;C:\Users\K_Rol\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.1.2\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="17.0.3.1+2-LTS-6"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="withdraw_ActiveAccount_decreaseBalance" classname="com.krolka.banksystem.service.BankingServiceTest" time="0.085"/>
+  <testcase name="deposit_NonActiveAccount_DoNothing" classname="com.krolka.banksystem.service.BankingServiceTest" time="0.001"/>
+  <testcase name="actualBalance_NonActiveAccount_returnNull" classname="com.krolka.banksystem.service.BankingServiceTest" time="0.004"/>
+  <testcase name="withdraw_BalanceLowerThenAmount_DoNothing" classname="com.krolka.banksystem.service.BankingServiceTest" time="0.001"/>
+  <testcase name="deposit_ActiveAccount_IncreaseBalance" classname="com.krolka.banksystem.service.BankingServiceTest" time="0.001"/>
+  <testcase name="actualBalance_ActiveAccount_returnBalance" classname="com.krolka.banksystem.service.BankingServiceTest" time="0.003"/>
+  <testcase name="withdraw_NonActiveAccount_doNothing" classname="com.krolka.banksystem.service.BankingServiceTest" time="0"/>
+</testsuite>
