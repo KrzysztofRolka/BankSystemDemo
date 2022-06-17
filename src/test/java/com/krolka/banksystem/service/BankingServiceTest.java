@@ -1,13 +1,13 @@
 package com.krolka.banksystem.service;
 
-import com.krolka.banksystem.domain.Account;
-import com.krolka.banksystem.domain.IndividualAccount;
+import com.krolka.banksystem.domain.*;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class BankingServiceTest {
 
@@ -47,7 +47,9 @@ class BankingServiceTest {
     @Test
     public void withdraw_ActiveAccount_decreaseBalance() {
         //GIVEN
-        final Account testAccount = new IndividualAccount("Krzysiek", "Rolka", true, BigDecimal.valueOf(1000));
+        //final Account testAccount = new IndividualAccount("Krzysiek", "Rolka", true, BigDecimal.valueOf(1000));
+        final Account testAccount = AccountFactory.COMPANY.createAccount();
+        testAccount.setBalance(BigDecimal.valueOf(1000));
         //WHEN
         BigDecimal actualBalacnce = underTest.withdraw(testAccount, BigDecimal.valueOf(500));
         //THEN
@@ -84,4 +86,11 @@ class BankingServiceTest {
         assertThat(actualBalance.compareTo(BigDecimal.valueOf(1500)));
     }
 
+    @Test
+    public void addTransaction_ActiveAccount_IncreaseBalance() {
+        //GIVEN
+        //WHEN
+        //THEN
+        assertTrue(false);
+    }
 }
