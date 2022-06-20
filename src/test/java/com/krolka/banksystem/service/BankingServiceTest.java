@@ -16,7 +16,12 @@ class BankingServiceTest {
     @Test
     void actualBalance_NonActiveAccount_returnNull() {
         //GIVEN
-        final Account testAccount = new IndividualAccount("Krzysiek", "Rolka", false, BigDecimal.valueOf(1000));
+        final AccountCreateDto dto = new AccountCreateDto()
+                .setFirstName("Krzysiek")
+                .setLastName("Rolka")
+                .setActive(false)
+                .setBalance(BigDecimal.valueOf(1000));
+        final Account testAccount = AccountFactory.createAccount(AccountType.INDIVIDUAL,dto);
         //WHEN
         BigDecimal actualBalance = underTest.actualBalance(testAccount);
         //THEN
@@ -26,7 +31,12 @@ class BankingServiceTest {
     @Test
     void actualBalance_ActiveAccount_returnBalance() {
         //GIVEN
-        final Account testAccount = new IndividualAccount("Krzysiek", "Rolka", true, BigDecimal.valueOf(1000));
+        final AccountCreateDto dto = new AccountCreateDto()
+                .setFirstName("Krzysiek")
+                .setLastName("Rolka")
+                .setActive(true)
+                .setBalance(BigDecimal.valueOf(1000));
+        final Account testAccount = AccountFactory.createAccount(AccountType.INDIVIDUAL,dto);
         //WHEN
         BigDecimal actualBalance = underTest.actualBalance(testAccount);
         //THEN
@@ -36,7 +46,12 @@ class BankingServiceTest {
     @Test
     public void withdraw_NonActiveAccount_doNothing() {
         //GIVEN
-        final Account testAccount = new IndividualAccount("Krzysiek", "Rolka", false, BigDecimal.valueOf(1000));
+        final AccountCreateDto dto = new AccountCreateDto()
+                .setFirstName("Krzysiek")
+                .setLastName("Rolka")
+                .setActive(false)
+                .setBalance(BigDecimal.valueOf(1000));
+        final Account testAccount = AccountFactory.createAccount(AccountType.INDIVIDUAL,dto);
         //WHEN
         BigDecimal actualBalance = underTest.withdraw(testAccount, BigDecimal.valueOf(500));
         //THEN
@@ -47,19 +62,27 @@ class BankingServiceTest {
     @Test
     public void withdraw_ActiveAccount_decreaseBalance() {
         //GIVEN
-        //final Account testAccount = new IndividualAccount("Krzysiek", "Rolka", true, BigDecimal.valueOf(1000));
-        final Account testAccount = AccountFactory.COMPANY.createAccount();
-        testAccount.setBalance(BigDecimal.valueOf(1000));
+        final AccountCreateDto dto = new AccountCreateDto()
+                .setFirstName("Krzysiek")
+                .setLastName("Rolka")
+                .setActive(true)
+                .setBalance(BigDecimal.valueOf(1000));
+        final Account testAccount = AccountFactory.createAccount(AccountType.INDIVIDUAL,dto);
         //WHEN
-        BigDecimal actualBalacnce = underTest.withdraw(testAccount, BigDecimal.valueOf(500));
+        BigDecimal actualBalance = underTest.withdraw(testAccount, BigDecimal.valueOf(500));
         //THEN
-        assertThat(actualBalacnce.compareTo(BigDecimal.valueOf(500)));
+        assertThat(actualBalance.compareTo(BigDecimal.valueOf(500)));
     }
 
     @Test
     public void withdraw_BalanceLowerThenAmount_DoNothing() {
         //GIVEN
-        final Account testAccount = new IndividualAccount("Krzysiek", "Rolka", true, BigDecimal.valueOf(1000));
+        final AccountCreateDto dto = new AccountCreateDto()
+                .setCompanyName("CompanyName")
+                .setTaxId(123456789)
+                .setActive(true)
+                .setBalance(BigDecimal.valueOf(1000));
+        final Account testAccount = AccountFactory.createAccount(AccountType.COMPANY,dto);
         //WHEN
         BigDecimal actualBalance = underTest.withdraw(testAccount, BigDecimal.valueOf(1500));
         //THEN
@@ -69,7 +92,12 @@ class BankingServiceTest {
     @Test
     public void deposit_NonActiveAccount_DoNothing() {
         //GIVEN
-        final Account testAccount = new IndividualAccount("Krzysiek", "Rolka", false, BigDecimal.valueOf(1000));
+        final AccountCreateDto dto = new AccountCreateDto()
+                .setCompanyName("CompanyName")
+                .setTaxId(123456789)
+                .setActive(false)
+                .setBalance(BigDecimal.valueOf(1000));
+        final Account testAccount = AccountFactory.createAccount(AccountType.COMPANY,dto);
         //WHEN
         BigDecimal actualBalance = underTest.deposit(testAccount, BigDecimal.valueOf(500));
         //THEN
@@ -79,18 +107,15 @@ class BankingServiceTest {
     @Test
     public void deposit_ActiveAccount_IncreaseBalance() {
         //GIVEN
-        final Account testAccount = new IndividualAccount("Krzysiek", "Rolka", true, BigDecimal.valueOf(1000));
+        final AccountCreateDto dto = new AccountCreateDto()
+                .setCompanyName("CompanyName")
+                .setTaxId(123456789)
+                .setActive(true)
+                .setBalance(BigDecimal.valueOf(1000));
+        final Account testAccount = AccountFactory.createAccount(AccountType.COMPANY,dto);
         //WHEN
         BigDecimal actualBalance = underTest.deposit(testAccount, BigDecimal.valueOf(500));
         //THEN
         assertThat(actualBalance.compareTo(BigDecimal.valueOf(1500)));
-    }
-
-    @Test
-    public void addTransaction_ActiveAccount_IncreaseBalance() {
-        //GIVEN
-        //WHEN
-        //THEN
-        assertTrue(false);
     }
 }

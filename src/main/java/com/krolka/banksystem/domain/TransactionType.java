@@ -1,6 +1,6 @@
 package com.krolka.banksystem.domain;
 
-public enum TypeOfTransaction {
+public enum TransactionType {
     WITHDRAW,
     DEPOSIT
 }

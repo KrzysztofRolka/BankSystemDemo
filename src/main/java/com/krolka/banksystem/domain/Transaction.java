@@ -4,17 +4,16 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class Transaction {
-
     private Date transactionDate;
     private Account account;
-
-    private TypeOfTransaction type;
+    private TransactionType type;
     private BigDecimal balance;
 
+    //TODO przejzec konstruktory bez parametrów.
     public Transaction() {
     }
 
-    public Transaction(Date transactionDate, Account account, TypeOfTransaction type, BigDecimal balance) {
+    public Transaction(Date transactionDate, Account account, TransactionType type, BigDecimal balance) {
         this.transactionDate = transactionDate;
         this.account = account;
         this.type = type;
@@ -37,11 +36,11 @@ public class Transaction {
         this.account = account;
     }
 
-    public TypeOfTransaction getType() {
+    public TransactionType getType() {
         return type;
     }
 
-    public void setType(TypeOfTransaction type) {
+    public void setType(TransactionType type) {
         this.type = type;
     }
 

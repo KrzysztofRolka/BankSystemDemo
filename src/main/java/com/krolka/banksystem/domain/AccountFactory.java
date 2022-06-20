@@ -1,22 +1,19 @@
 package com.krolka.banksystem.domain;
 
-public enum AccountFactory {
+public abstract class AccountFactory {
 
-    INDIVIDUAL {
-        @Override
-        public Account createAccount() {
-            return new IndividualAccount();
-        }
-    },
-    COMPANY {
-        @Override
-        public Account createAccount() {
-            return new CompanyAccount();
-        }
-    };
+    public static Account createAccount(AccountType type, AccountCreateDto dto) {
 
-    public abstract Account createAccount();
+        switch (type) {
+
+            case INDIVIDUAL:
+                return new IndividualAccount(dto.getFirstName(), dto.getLastName(), dto.isActive(), dto.getBalance());
+
+            case COMPANY:
+                return new CompanyAccount(dto.getCompanyName(), dto.getTaxId(), dto.isActive(), dto.getBalance());
+        }
+        return null;
+    }
 }
-
 
 
