@@ -8,11 +8,29 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-//TODO implement log4j, createTransaction, usunac of z nazw
 public class BankingService {
 
+    private static volatile BankingService instance = null;
+    //SINGLETON
+    private BankingService() {
+        if (instance != null) {
+            throw new RuntimeException("Not allowed. Please use getInstance() method");
+        }
+    }
+
+    public static BankingService getInstance() {
+        if (instance == null) {
+            synchronized (BankingService.class) {
+                if (instance == null) {
+                    instance = new BankingService();
+                }
+            }
+        }
+        return instance;
+    }
+
     BigDecimal actualBalance(Account account) {
-        if (account.isActive() == true) {
+        if (account.isActive()) {
             return account.getBalance();
         }
         return null;
@@ -22,9 +40,7 @@ public class BankingService {
         if (account.isActive()) {
             if (!(account.getBalance().compareTo(amount) == -1)) {
                 account.setBalance(account.getBalance().min(amount));
-
-                createTransaction(new Date(), account, TransactionType.WITHDRAW, account.getBalance());
-
+                account.setTransactions(createTransaction(account, new Date(), TransactionType.WITHDRAW,account.getBalance()));
                 return account.getBalance();
             }
         }
@@ -34,18 +50,14 @@ public class BankingService {
     public BigDecimal deposit(Account account, BigDecimal amount) {
         if (account.isActive()) {
             account.setBalance(account.getBalance().add(amount));
-            createTransaction(new Date(), account, TransactionType.DEPOSIT, account.getBalance());
+            account.setTransactions(createTransaction(account, new Date(), TransactionType.DEPOSIT, account.getBalance()));
         }
         return account.getBalance();
     }
 
-    private Transaction createTransaction(Date transactionDate, Account account, TransactionType type, BigDecimal balance) {
-        return new Transaction(transactionDate, account, type, balance);
-    }
-
-    //TODO add body to method
-    public List<Transaction> historyOfTransaction() {
-
-        return null;
+    private List<Transaction> createTransaction(Account account, Date transactionDate, TransactionType type, BigDecimal balance) {
+        List<Transaction> transactions = account.getTransactions();
+        transactions.add(new Transaction(transactionDate, type, balance));
+        return transactions;
     }
 }

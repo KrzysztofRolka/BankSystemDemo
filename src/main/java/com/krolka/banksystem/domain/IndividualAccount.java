@@ -7,9 +7,6 @@ public class IndividualAccount extends Account{
     private String firstName;
     private String lastName;
 
-    public IndividualAccount() {
-    }
-
     public IndividualAccount(String firstName, String lastName,boolean isActive, BigDecimal balance) {
         super(isActive, balance);
         this.firstName = firstName;
@@ -30,5 +27,10 @@ public class IndividualAccount extends Account{
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Override
+    public String sign() {
+        return String.format("%s %s must sign the documents. ", firstName,lastName);
     }
 }

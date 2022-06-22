@@ -3,7 +3,10 @@ C:\Users\K_Rol\IdeaProjects\BankSystem\src\main\java\com\krolka\banksystem\domai
 C:\Users\K_Rol\IdeaProjects\BankSystem\src\main\java\com\krolka\banksystem\domain\AccountType.java
 C:\Users\K_Rol\IdeaProjects\BankSystem\src\main\java\com\krolka\banksystem\domain\Account.java
 C:\Users\K_Rol\IdeaProjects\BankSystem\src\main\java\com\krolka\banksystem\domain\AccountFactory.java
+C:\Users\K_Rol\IdeaProjects\BankSystem\src\main\java\com\krolka\banksystem\domain\AccountDecorator.java
 C:\Users\K_Rol\IdeaProjects\BankSystem\src\main\java\com\krolka\banksystem\domain\TransactionType.java
 C:\Users\K_Rol\IdeaProjects\BankSystem\src\main\java\com\krolka\banksystem\service\BankingService.java
+C:\Users\K_Rol\IdeaProjects\BankSystem\src\main\java\com\krolka\banksystem\domain\InternetSignAccountDecorator.java
+C:\Users\K_Rol\IdeaProjects\BankSystem\src\main\java\com\krolka\banksystem\domain\PapierSignAccountDecorator.java
 C:\Users\K_Rol\IdeaProjects\BankSystem\src\main\java\com\krolka\banksystem\domain\AccountCreateDto.java
-C:\Users\K_Rol\IdeaProjects\BankSystem\src\main\java\com\krolka\banksystem\domain\CompanyAccount.java
+C:\Users\K_Rol\IdeaProjects\BankSystem\src\main\java\com\krolka\banksystem\domain\BusinessAccount.java

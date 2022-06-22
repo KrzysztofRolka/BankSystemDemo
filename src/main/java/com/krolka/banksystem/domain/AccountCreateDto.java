@@ -2,9 +2,10 @@ package com.krolka.banksystem.domain;
 
 import java.math.BigDecimal;
 
+
+//BUILDER PATTERN
 public class AccountCreateDto {
 
-    //Account
     private boolean isActive;
     private BigDecimal balance;
     private String companyName;
@@ -36,34 +37,64 @@ public class AccountCreateDto {
         return lastName;
     }
 
-    public AccountCreateDto setActive(boolean active) {
-        isActive = active;
-        return this;
-    }
-
-    public AccountCreateDto setBalance(BigDecimal balance) {
-        this.balance = balance;
-        return this;
+    private AccountCreateDto() {
 
     }
 
-    public AccountCreateDto setCompanyName(String companyName) {
-        this.companyName = companyName;
-        return this;
+    //Static Factory Method
+    public static Builder builder() {
+        return new Builder();
     }
 
-    public AccountCreateDto setTaxId(int taxId) {
-        this.taxId = taxId;
-        return this;
-    }
+    public static class Builder {
 
-    public AccountCreateDto setFirstName(String firstName) {
-        this.firstName = firstName;
-        return this;
-    }
+        private boolean isActive;
+        private BigDecimal balance;
+        private String companyName;
+        private int taxId;
+        private String firstName;
+        private String lastName;
 
-    public AccountCreateDto setLastName(String lastName) {
-        this.lastName = lastName;
-        return this;
+
+        public Builder isActive(boolean isActive) {
+            this.isActive = isActive;
+            return this;
+        }
+
+        public Builder balance(BigDecimal balance) {
+            this.balance = balance;
+            return this;
+        }
+
+        public Builder companyName(String companyName) {
+            this.companyName = companyName;
+            return this;
+        }
+
+        public Builder taxId(int taxId) {
+            this.taxId = taxId;
+            return this;
+        }
+
+        public Builder firstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public Builder lastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public AccountCreateDto bulid() {
+            AccountCreateDto dto = new AccountCreateDto();
+            dto.isActive = this.isActive;
+            dto.balance = this.balance;
+            dto.taxId = this.taxId;
+            dto.companyName = this.companyName;
+            dto.firstName = this.firstName;
+            dto.lastName = this.lastName;
+            return dto;
+        }
     }
 }

@@ -5,17 +5,11 @@ import java.util.Date;
 
 public class Transaction {
     private Date transactionDate;
-    private Account account;
     private TransactionType type;
     private BigDecimal balance;
 
-    //TODO przejzec konstruktory bez parametrów.
-    public Transaction() {
-    }
-
-    public Transaction(Date transactionDate, Account account, TransactionType type, BigDecimal balance) {
+    public Transaction(Date transactionDate, TransactionType type, BigDecimal balance) {
         this.transactionDate = transactionDate;
-        this.account = account;
         this.type = type;
         this.balance = balance;
     }
@@ -26,14 +20,6 @@ public class Transaction {
 
     public void setTransactionDate(Date transactionDate) {
         this.transactionDate = transactionDate;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
     }
 
     public TransactionType getType() {
