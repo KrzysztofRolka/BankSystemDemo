@@ -205,5 +205,20 @@ class BankingServiceTest {
         //THEN
         assertThat(sign).isEqualTo("Krzysiek Rolka must sign the documents. Sign method: e-sign. ");
     }
+
+    @Test
+    public void logout_internetSign(){
+        final AccountCreateDto dto = AccountCreateDto.builder()
+                .firstName("Krzysiek")
+                .lastName("Rolka")
+                .isActive(true)
+                .balance(BigDecimal.valueOf(1000))
+                .bulid();
+        final Account testAccount = new InternetSignAccountDecorator(AccountFactory.createAccount(AccountType.INDIVIDUAL, dto));
+        //WHEN
+        final String logout = ((InternetSignAccountDecorator) testAccount).logout();
+        //THEN
+        assertThat(logout).isEqualTo("Logout Successful!");
+    }
 }
 
