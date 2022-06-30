@@ -1,6 +1,9 @@
 package com.krolka.banksystem.service;
 
 import com.krolka.banksystem.domain.*;
+import com.krolka.banksystem.strategy.BusinessCommission;
+import com.krolka.banksystem.strategy.Context;
+import com.krolka.banksystem.strategy.IndividualCommission;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -220,5 +223,90 @@ class BankingServiceTest {
         //THEN
         assertThat(logout).isEqualTo("Logout Successful!");
     }
+    @Test
+    public void subtractCommission_deposit_BusinessAccount() {
+        //GIVEN
+        final AccountCreateDto dto = AccountCreateDto.builder()
+                .companyName("CompanyName")
+                .taxId(123456789)
+                .isActive(true)
+                .balance(BigDecimal.valueOf(1000))
+                .bulid();
+        final Account testAccount = AccountFactory.createAccount(AccountType.BUSINESS, dto);
+        //WHEN
+        BigDecimal actualBalance = underTest.deposit(testAccount, BigDecimal.valueOf(500));
+
+        Context context = new Context(new BusinessCommission());
+        context.executeStrategy(testAccount, TransactionType.DEPOSIT,BigDecimal.valueOf(500));
+        actualBalance = testAccount.getBalance();
+        
+        //THEN
+        assertThat(actualBalance).isEqualByComparingTo(BigDecimal.valueOf(1490));
+    }
+
+    @Test
+    public void subtractCommission_withdraw_BusinessAccount() {
+        //GIVEN
+        final AccountCreateDto dto = AccountCreateDto.builder()
+                .companyName("CompanyName")
+                .taxId(123456789)
+                .isActive(true)
+                .balance(BigDecimal.valueOf(1000))
+                .bulid();
+        final Account testAccount = AccountFactory.createAccount(AccountType.BUSINESS, dto);
+        //WHEN
+        BigDecimal actualBalance = underTest.withdraw(testAccount, BigDecimal.valueOf(500));
+
+        Context context = new Context(new BusinessCommission());
+        context.executeStrategy(testAccount, TransactionType.WITHDRAW,BigDecimal.valueOf(500));
+        actualBalance = testAccount.getBalance();
+
+        //THEN
+        assertThat(actualBalance).isEqualByComparingTo(BigDecimal.valueOf(490));
+    }
+
+    @Test
+    public void subtractCommission_deposit_IndividualAccount() {
+        //GIVEN
+        final AccountCreateDto dto = AccountCreateDto.builder()
+                .firstName("Krzysiek")
+                .lastName("Rolka")
+                .isActive(true)
+                .balance(BigDecimal.valueOf(1000))
+                .bulid();
+        final Account testAccount = AccountFactory.createAccount(AccountType.INDIVIDUAL, dto);
+        //WHEN
+        BigDecimal actualBalance = underTest.deposit(testAccount, BigDecimal.valueOf(500));
+
+        Context context = new Context(new IndividualCommission());
+        context.executeStrategy(testAccount, TransactionType.DEPOSIT,BigDecimal.valueOf(500));
+        actualBalance = testAccount.getBalance();
+
+        //THEN
+        assertThat(actualBalance).isEqualByComparingTo(BigDecimal.valueOf(1475));
+    }
+
+    @Test
+    public void subtractCommission_withdraw_IndividualAccount() {
+        //GIVEN
+        final AccountCreateDto dto = AccountCreateDto.builder()
+                .firstName("Krzysiek")
+                .lastName("Rolka")
+                .isActive(true)
+                .balance(BigDecimal.valueOf(1000))
+                .bulid();
+        final Account testAccount = AccountFactory.createAccount(AccountType.INDIVIDUAL, dto);
+        //WHEN
+        BigDecimal actualBalance = underTest.withdraw(testAccount, BigDecimal.valueOf(500));
+
+        Context context = new Context(new IndividualCommission());
+        context.executeStrategy(testAccount, TransactionType.WITHDRAW,BigDecimal.valueOf(500));
+        actualBalance = testAccount.getBalance();
+
+        //THEN
+        assertThat(actualBalance).isEqualByComparingTo(BigDecimal.valueOf(500));
+
+    }
+
 }
 
